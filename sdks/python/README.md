@@ -6,7 +6,7 @@ Reference Python SDK for the [Facet Protocol](https://github.com/facet-llc/proto
 pip install facet-sdk
 ```
 
-## Verify a KYAPay JWT
+## Verify a Facet KYA
 
 ```python
 from facet_sdk import VerifierOptions, verify_kya_token
@@ -71,7 +71,7 @@ result = verify_audit_record(
 
 ## Run the conformance suite
 
-The SDK ships with both KYAPay and Ed25519 audit vectors:
+The SDK ships with both Facet KYA and Ed25519 audit vectors:
 
 ```bash
 pip install -e ".[test]"
@@ -87,12 +87,12 @@ Vectors live in `../../test-vectors/` at the repo root. Same vectors the TypeScr
 - `verify_kya_token()` with mandatory ES256 + JWKS resolution + claim checks
 - `FacetTerminal` client for all six v0.1 endpoints
 - `verify_audit_record()` Ed25519 verifier per `AUDIT.md`
-- Conformance against the KYAPay (10) and audit (4) vector suites
+- Conformance against the Facet KYA (10) and audit (4) vector suites
 
 `v0.1.0` will add:
 
 - Async client variants (`AsyncFacetTerminal` on `httpx.AsyncClient`)
-- Multi-rail payment support (Visa VIC, Mastercard SCOF) per KYAPay `stp` claim
+- Multi-rail payment support (Visa VIC, Mastercard SCOF) per the `stp` claim in the Facet KYA
 - Generated TypedDicts from the JSON schemas
 
 ## License

@@ -7,8 +7,8 @@ body:
     id: section
     attributes:
       label: Section
-      description: Which section of SPEC.md (e.g. "3. Identity (KYAPay)")
-      placeholder: "3. Identity (KYAPay)"
+      description: Which section of SPEC.md (e.g. "3. Identity (KYA)")
+      placeholder: "3. Identity (KYA)"
     validations:
       required: true
   - type: textarea

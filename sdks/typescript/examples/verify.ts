@@ -1,5 +1,5 @@
 /**
- * Verify a KYAPay JWT against an issuer's JWKS.
+ * Verify a Facet KYA against an issuer's JWKS.
  *
  * Usage:
  *   KYA_TOKEN=eyJ... AUDIENCE=https://my-merchant.com pnpm tsx examples/verify.ts

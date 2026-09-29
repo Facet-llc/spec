@@ -24,7 +24,7 @@ interface Vector {
   };
 }
 
-const VECTORS_DIR = join(__dirname, '..', '..', '..', 'test-vectors', 'kyapay');
+const VECTORS_DIR = join(__dirname, '..', '..', '..', 'test-vectors', 'facet-kya');
 
 function loadVectors(): Vector[] {
   const files = readdirSync(VECTORS_DIR)
@@ -33,7 +33,7 @@ function loadVectors(): Vector[] {
   return files.map((f) => JSON.parse(readFileSync(join(VECTORS_DIR, f), 'utf8')));
 }
 
-describe('KYAPay verifier conformance', () => {
+describe('Facet KYA verifier conformance', () => {
   for (const v of loadVectors()) {
     it(`${v.name}: ${v.description}`, async () => {
       const result = await verifyKYAToken(v.input.jwt, {

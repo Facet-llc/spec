@@ -102,7 +102,7 @@ function mapJoseError(err: unknown): string {
 }
 
 /**
- * Verify a KYAPay JWT (kya+jwt, pay+jwt, or kya-pay+jwt) per Facet spec section 3.
+ * Verify a Facet KYA (kya+jwt, pay+jwt, or kya-pay+jwt) per Facet spec section 3.
  *
  * Mandatory checks:
  *   - alg MUST be ES256

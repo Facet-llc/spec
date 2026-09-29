@@ -5,7 +5,7 @@
  * Run:
  *   KYA_TOKEN=eyJ... pnpm tsx examples/hello-agent/index.ts "dallas plumbing"
  *
- * Without a real KYAPay token + funded wallet, the settle step will fail with
+ * Without a real Facet KYA + funded wallet, the settle step will fail with
  * a payment-required error. That's the expected behavior when you haven't
  * actually paid yet; the example shows you what the wire-level flow looks like.
  */
@@ -15,7 +15,7 @@ const token = process.env.KYA_TOKEN;
 const query = process.argv[2] ?? 'dallas plumbing';
 
 if (!token) {
-  console.error('set KYA_TOKEN env var (any KYAPay JWT for the agent)');
+  console.error('set KYA_TOKEN env var (a Facet KYA for the agent)');
   process.exit(1);
 }
 

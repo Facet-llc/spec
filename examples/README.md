@@ -3,7 +3,7 @@
 End-to-end integrations land in v0.2. Planned:
 
 - `hello-agent/`: minimal agent that calls `/v1/search`, picks a listing, settles via x402
-- `merchant-typescript/`: Facet-compliant merchant in TypeScript with a KYAPay verifier
+- `merchant-typescript/`: Facet-compliant merchant in TypeScript with a Facet KYA verifier
 - `merchant-python/`: same in Python (FastAPI)
 - `merchant-go/`: same in Go (chi)
 

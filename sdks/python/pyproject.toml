@@ -5,12 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "facet-sdk"
 version = "0.0.1"
-description = "Reference Python SDK for the Facet Protocol. KYAPay verifier, Terminal client, audit verifier."
+description = "Reference Python SDK for the Facet Protocol. Facet KYA verifier, Terminal client, audit verifier."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
 authors = [{ name = "Facet" }]
-keywords = ["agentic-commerce", "kyapay", "x402", "mcp", "facet", "agent-identity"]
+keywords = ["agentic-commerce", "facet-kya", "x402", "mcp", "facet", "agent-identity"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",

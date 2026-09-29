@@ -1,4 +1,4 @@
-"""Run the KYAPay JWT conformance vectors against the Python verifier."""
+"""Run the Facet KYA conformance vectors against the Python verifier."""
 
 from __future__ import annotations
 
@@ -9,12 +9,12 @@ import pytest
 
 from facet_sdk import VerifierOptions, verify_kya_token
 
-VECTORS_DIR = Path(__file__).resolve().parents[3] / "test-vectors" / "kyapay"
+VECTORS_DIR = Path(__file__).resolve().parents[3] / "test-vectors" / "facet-kya"
 VECTORS = sorted(VECTORS_DIR.glob("*.json"))
 
 
 @pytest.mark.parametrize("path", VECTORS, ids=lambda p: p.stem)
-def test_kyapay_vector(path: Path) -> None:
+def test_facet_kya_vector(path: Path) -> None:
     v = json.loads(path.read_text())
     inp = v["input"]
 

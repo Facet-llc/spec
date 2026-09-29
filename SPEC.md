@@ -2,15 +2,14 @@
 
 **Version:** 0.2.0
 **Status:** Working draft
-**Last updated:** 2026-08-06
+**Last updated:** 2026-09-29
 
 ## 1. Introduction
 
 Facet is the index for agent-ready businesses. This document specifies the protocol that lets autonomous agents discover, identify, transact with, and audit any participating merchant on the web.
 
-The protocol composes four open standards into one rail:
+The protocol composes three open standards into one rail:
 
-- **KYAPay**: open IETF identity standard (ES256 JWT + JWKS)
 - **MCP**: Anthropic capability and tool-discovery protocol
 - **x402**: HTTP 402 payment-required revival, USDC-native
 - **RFC 9421**: signed HTTP messages for web-bot-auth
@@ -19,7 +18,7 @@ Facet does not redefine any of these. It defines:
 
 1. How they compose for agentic commerce
 2. The endpoints a participating merchant exposes
-3. The verifier semantics for agent credentials
+3. The agent credential, the Facet KYA (Section 3), and its verifier semantics
 4. The audit-trail format for every settled transaction
 
 ### 1.1 What changed in v0.2
@@ -201,11 +200,11 @@ A client authenticates to the token endpoint with a `private_key_jwt` client ass
 
 ## 6. Payments (x402)
 
-Settlement MUST follow x402. Currency MUST be USDC on Base L2 in v0.1. Multi-rail settlement is selected per the KYAPay `stp` claim.
+Settlement MUST follow x402. Currency MUST be USDC on Base L2 in v0.1. Multi-rail settlement is selected per the `stp` claim in the Facet KYA.
 
 ## 7. Audit (Ed25519)
 
-Every settled transaction returns a signed audit record. This is Facet-specific and is not part of the KYAPay or x402 spec.
+Every settled transaction returns a signed audit record. This is Facet-specific and is not part of the x402 spec.
 
 ```json
 {
@@ -222,7 +221,6 @@ Verifier semantics for audit records: see [`AUDIT.md`](./AUDIT.md).
 
 ## 8. References
 
-- KYAPay: open IETF Independent Submission for agent identity. Search `kyapay` at <https://datatracker.ietf.org>.
 - MCP: <https://spec.modelcontextprotocol.io>
 - x402: <https://github.com/coinbase/x402>
 - RFC 9421 (HTTP Message Signatures): <https://www.rfc-editor.org/rfc/rfc9421>
