@@ -1,6 +1,6 @@
 # Test vectors
 
-Conformance test vectors for KYAPay JWT verifiers.
+Conformance test vectors for Facet KYA verifiers.
 
 ## Format
 
@@ -33,11 +33,11 @@ Each `.json` file is a self-contained test vector:
 
 | File | Scenario |
 |---|---|
-| `kyapay/01-valid-kya-jwt.json` | Happy path. ES256, valid issuer, valid audience, within iat/exp window. |
-| `kyapay/02-expired.json` | `exp` is before `now`. Verifier MUST reject. |
-| `kyapay/03-wrong-audience.json` | `aud` does not match `verify_options.audience`. Reject. |
-| `kyapay/04-wrong-algorithm.json` | Token signed with HS256. Verifier MUST reject; only ES256 is valid in v0.1. |
-| `kyapay/05-tampered-signature.json` | Signature byte flipped. Verifier MUST reject. |
+| `facet-kya/01-valid-kya-jwt.json` | Happy path. ES256, valid issuer, valid audience, within iat/exp window. |
+| `facet-kya/02-expired.json` | `exp` is before `now`. Verifier MUST reject. |
+| `facet-kya/03-wrong-audience.json` | `aud` does not match `verify_options.audience`. Reject. |
+| `facet-kya/04-wrong-algorithm.json` | Token signed with HS256. Verifier MUST reject; only ES256 is valid in v0.1. |
+| `facet-kya/05-tampered-signature.json` | Signature byte flipped. Verifier MUST reject. |
 
 ## Generate
 
@@ -54,7 +54,7 @@ Requires `pyjwt` and `cryptography`.
 
 ```typescript
 import { verifyKYAToken } from '@facet/sdk-js';
-import vector from './test-vectors/kyapay/01-valid-kya-jwt.json';
+import vector from './test-vectors/facet-kya/01-valid-kya-jwt.json';
 
 const now = vector.input.now;
 const result = await verifyKYAToken(vector.input.jwt, {

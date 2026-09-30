@@ -38,7 +38,7 @@ The settle step expects a real x402 payment receipt (a real `tx_hash` from a USD
 ## What this example proves
 
 - The Facet Terminal client SDK works against a live deployment
-- The protocol composes (KYAPay identity → ranked search → quote/reserve/settle → signed audit)
+- The protocol composes (Facet KYA identity → ranked search → quote/reserve/settle → signed audit)
 - Errors are typed (`PaymentRequiredError`, `FacetError`)
 - The whole flow is < 50 lines of TypeScript on the agent side
 

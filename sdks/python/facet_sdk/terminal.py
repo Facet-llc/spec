@@ -23,7 +23,7 @@ class FacetTerminal:
     """Client for the hosted Facet Terminal.
 
     Wraps the six v0.1 endpoints (capabilities, search, quote, reserve,
-    settle, audit) with KYAPay authorization and typed errors.
+    settle, audit) with Facet KYA authorization and typed errors.
 
     Example:
         facet = FacetTerminal(get_kya_token=lambda: os.environ["KYA_TOKEN"])

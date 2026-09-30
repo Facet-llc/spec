@@ -1,4 +1,4 @@
-"""KYAPay JWT verifier per Facet spec section 3."""
+"""Facet KYA verifier per Facet spec section 3."""
 
 from __future__ import annotations
 
@@ -57,7 +57,7 @@ def _validate_custom_claims(p: dict[str, Any]) -> tuple[bool, str]:
 
 
 def verify_kya_token(token: str, options: VerifierOptions) -> VerifyResult:
-    """Verify a KYAPay JWT.
+    """Verify a Facet KYA.
 
     Mandatory checks:
       - alg MUST be ES256

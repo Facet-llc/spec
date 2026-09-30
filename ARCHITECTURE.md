@@ -2,7 +2,7 @@
 
 Facet is the protocol layer for agentic commerce. This doc explains how the pieces fit together and where the trust boundaries are. For wire format see [`SPEC.md`](./SPEC.md). For the SDK see [`sdks/typescript/`](./sdks/typescript/).
 
-## The four open standards Facet rides
+## Identity and the three open standards Facet rides
 
 ```
                     +-----------------------+
@@ -14,7 +14,7 @@ Facet is the protocol layer for agentic commerce. This doc explains how the piec
             |                                       |
             v                                       v
    +--------------+  +-----------+  +----------+  +-----------+
-   | KYAPay (id)  |  | MCP (cap) |  | x402 ($) |  | RFC 9421  |
+   |  Facet KYA   |  | MCP (cap) |  | x402 ($) |  | RFC 9421  |
    |  ES256 JWT   |  | Anthropic |  | Coinbase |  | bot-auth  |
    |  + JWKS      |  | discovery |  | USDC L2  |  | Cloudflare|
    +------+-------+  +-----+-----+  +----+-----+  +-----+-----+
@@ -24,7 +24,7 @@ Facet is the protocol layer for agentic commerce. This doc explains how the piec
                       manifest         settlement    request
 ```
 
-Facet does not re-implement any of these. We compose them into a single rail and add the layers above the spec that production deployments need.
+Identity is Facet's own layer: the Facet KYA, specified in [`SPEC.md`](./SPEC.md) Section 3. Facet does not re-implement the three open standards. We compose them into a single rail and add the layers above the spec that production deployments need.
 
 ## Protocol flow
 
@@ -42,7 +42,7 @@ The agent's job is to identify itself, find what it wants, lock the price, pay, 
      |<-------------------------------------------------|
      |                                                  |
      |  GET /v1/search?q=...                            |
-     |  Authorization: Bearer <KYAPay JWT>              |
+     |  Authorization: Bearer <Facet KYA>               |
      |------------------------------------------------->|
      |    1. extract iss, kid from JWT header           |
      |    2. resolve issuer JWKS                        |
@@ -74,20 +74,20 @@ The agent's job is to identify itself, find what it wants, lock the price, pay, 
      |<-------------------------------------------------|
 ```
 
-Six round-trips, fully auditable. The agent's KYAPay JWT carries identity through all of them; the merchant's Ed25519 audit record carries proof of settlement back.
+Six round-trips, fully auditable. A Facet KYA carries the agent's identity on every authenticated call; the merchant's Ed25519 audit record carries proof of settlement back.
 
 ## Trust boundaries
 
 | Boundary | Trusted by | Verification |
 |---|---|---|
-| Agent → Merchant | KYAPay JWT | Merchant verifies via issuer's JWKS (ES256 + JWKS) |
+| Agent → Merchant | Facet KYA | Merchant verifies via issuer's JWKS (ES256 + JWKS) |
 | Issuer → Merchant (via JWKS) | Issuer's HTTPS endpoint | Cached per `kid`, allowlisted by `expectedIssuers` |
 | Agent payment → Merchant | Public Base L2 transaction | Merchant checks `tx_hash` matches `to`/`amount` from /v1/reserve |
 | Merchant audit → Agent | Ed25519 signature on audit record | Agent verifies via merchant's signing key (in DID document or JWKS) |
 
 Two trust gates matter most:
 
-1. **The agent's KYAPay token is only as trustworthy as the issuer.** Merchants MUST allowlist issuers; the SDK refuses to verify against arbitrary `iss` claims for this reason.
+1. **The agent's Facet KYA is only as trustworthy as its issuer.** Merchants MUST allowlist issuers; the SDK refuses to verify against arbitrary `iss` claims for this reason.
 2. **The merchant's audit signature is only as trustworthy as the merchant's signing key.** Future v0.2 work: agent-side verifier for audit records, with reputation registry for issuer/merchant scoring.
 
 ## What's open vs what's closed
@@ -105,10 +105,9 @@ Two trust gates matter most:
 |  - SPEC.md                                     |
 |  - schemas/v1.*.json                           |
 |  - sdks/typescript/ (verifier + Terminal)      |
-|  - test-vectors/kyapay/                        |
+|  - test-vectors/facet-kya/                     |
 +------------------------------------------------+
 |  Open standards we ride       (OPEN, others)   |
-|  - KYAPay (IETF Independent Submission)        |
 |  - MCP (Anthropic)                             |
 |  - x402 (Coinbase)                             |
 |  - RFC 9421 (IETF, Cloudflare)                 |

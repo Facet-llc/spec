@@ -1,4 +1,4 @@
-"""Generate KYAPay JWT conformance test vectors.
+"""Generate Facet KYA conformance test vectors.
 
 Produces vectors covering the verifier's mandatory checks per SPEC.md
 section 3 plus the additional defenses in @facet/sdk-js v0.0.2:
@@ -19,7 +19,7 @@ from cryptography.hazmat.backends import default_backend
 import jwt as pyjwt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "kyapay")
+OUT = os.path.join(HERE, "facet-kya")
 os.makedirs(OUT, exist_ok=True)
 
 # Deterministic test issuer + audience

@@ -29,12 +29,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 
 - Tagline: "the search engine for agentic commerce" became "the index of agent-ready businesses". Sharper category framing.
+- The agent credential is named the Facet KYA throughout the spec, docs, schemas, and SDKs. SPEC.md lists only the open standards Facet composes (Section 1) and cites them in Section 8; identity is Facet's own layer, specified in Section 3. The conformance vectors moved unchanged to `test-vectors/facet-kya/`, and the Python conformance test is now `sdks/python/tests/test_facet_kya_conformance.py`. Verifier behavior is unchanged.
 
 ### Added
 
 - JSON Schema definitions for the six v0.1 endpoints, in `schemas/`.
-- KYAPay JWT conformance test vectors, in `test-vectors/kyapay/`.
-- Reference TypeScript SDK scaffold (`@facet/sdk-js` v0.0.1) with a real KYAPay verifier built on `jose`, in `sdks/typescript/`.
+- Facet KYA JWT conformance test vectors, in `test-vectors/facet-kya/`.
+- Reference TypeScript SDK scaffold (`@facet/sdk-js` v0.0.1) with a real Facet KYA verifier built on `jose`, in `sdks/typescript/`.
 
 ## [0.1.0] - 2026-05-03
 
@@ -43,7 +44,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Initial public release of the Facet Protocol specification
 - Section 1: Introduction and standards composition
 - Section 2: Endpoint surface (`/v1/capabilities`, `/v1/search`, `/v1/quote`, `/v1/reserve`, `/v1/settle`, `/v1/audit/<txn-id>`)
-- Section 3: Identity verification semantics (KYAPay)
+- Section 3: Identity verification semantics (Facet KYA)
 - Section 4: Discovery via MCP
 - Section 5: Payments via x402 (USDC on Base L2)
 - Section 6: Signed audit records (Ed25519, above-the-spec extension)
@@ -52,6 +53,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Coming in v0.2
 
-- Multi-rail payment support (Visa VIC, Mastercard SCOF) per KYAPay `stp` claim
+- Multi-rail payment support (Visa VIC, Mastercard SCOF) per the Facet KYA `stp` claim
 - SDK packages in Python and Go
 - Example merchant integration end-to-end

@@ -11,7 +11,7 @@
         "txn_id": { "type": "string" },
         "iat": { "type": "integer", "description": "Unix epoch seconds when the record was signed." },
         "merchant": { "type": "string", "description": "Merchant DID." },
-        "agent": { "type": "string", "description": "Agent DID derived from the KYAPay JWT used to settle." },
+        "agent": { "type": "string", "description": "Agent DID derived from the Facet KYA used to settle." },
         "amount": { "type": "string" },
         "currency": { "type": "string", "enum": ["USDC"] },
         "tx_hash": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },

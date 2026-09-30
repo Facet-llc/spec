@@ -1,12 +1,12 @@
 # @facet/sdk-js
 
-Reference TypeScript SDK for the [Facet Protocol](https://github.com/facet-llc/protocol). KYAPay verifier today; Terminal client coming in v0.1.0.
+Reference TypeScript SDK for the [Facet Protocol](https://github.com/facet-llc/protocol). Facet KYA verifier today; Terminal client coming in v0.1.0.
 
 ```bash
 npm install @facet/sdk-js
 ```
 
-## Verify a KYAPay JWT
+## Verify a Facet KYA
 
 ```typescript
 import { verifyKYAToken } from '@facet/sdk-js';
@@ -36,7 +36,7 @@ const result = await verifyKYAToken(jwt, {
 
 ```typescript
 import { verifyKYAToken } from '@facet/sdk-js';
-import vector from '../../test-vectors/kyapay/01-valid-kya-jwt.json' with { type: 'json' };
+import vector from '../../test-vectors/facet-kya/01-valid-kya-jwt.json' with { type: 'json' };
 
 const result = await verifyKYAToken(vector.input.jwt, {
   ...vector.input.verify_options,

@@ -13,7 +13,7 @@ export interface TerminalConfig {
   /** Base URL of the Facet hosted Terminal. Defaults to https://facet.llc. */
   baseUrl?: string;
   /**
-   * Returns a KYAPay JWT for the agent. Called per request so callers can
+   * Returns a Facet KYA for the agent. Called per request so callers can
    * refresh tokens, swap scopes, or rotate issuers without rebuilding the
    * client.
    */
@@ -60,7 +60,7 @@ export class PaymentRequiredError extends FacetError {
 
 /**
  * Client for the hosted Facet Terminal. Wraps the six v0.1 endpoints
- * (capabilities, search, quote, reserve, settle, audit) with KYAPay
+ * (capabilities, search, quote, reserve, settle, audit) with Facet KYA
  * authorization and typed responses.
  *
  * @example

@@ -43,7 +43,7 @@ jobs:
           python-version: '3.12'
       - name: install
         run: pip install -e ".[test]"
-      - name: test (kyapay + audit conformance)
+      - name: test (facet-kya + audit conformance)
         run: pytest -v
 
   vectors:
@@ -56,6 +56,6 @@ jobs:
           python-version: '3.12'
       - name: schema check on existing vectors
         run: |
-          for f in test-vectors/kyapay/*.json test-vectors/audit/*.json; do
+          for f in test-vectors/facet-kya/*.json test-vectors/audit/*.json; do
             python -c "import json,sys; v=json.load(open('$f')); assert 'name' in v and 'input' in v and 'expected' in v, '$f bad shape'"
           done

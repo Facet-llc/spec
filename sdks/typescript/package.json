@@ -1,7 +1,7 @@
 {
   "name": "@facet/sdk-js",
   "version": "0.0.1",
-  "description": "Reference TypeScript SDK for the Facet Protocol. KYAPay verifier and Terminal client.",
+  "description": "Reference TypeScript SDK for the Facet Protocol. Facet KYA verifier and Terminal client.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
   },
   "keywords": [
     "agentic-commerce",
-    "kyapay",
+    "facet-kya",
     "x402",
     "mcp",
     "facet",
